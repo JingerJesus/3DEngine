@@ -103,11 +103,30 @@ public class Driver extends Application {
                 }
                 projected = new Tri(projVecs);
 
+                //SCALE
+                Vec[] semiScaled = new Vec[3];
+                Vec[] scaled = new Vec[3];
+
+
+                semiScaled[0] = new Vec(projVecs[0].getX() + 1, projVecs[0].getY() + 1, projVecs[0].getZ());
+                semiScaled[1] = new Vec(projVecs[1].getX() + 1, projVecs[1].getY() + 1, projVecs[1].getZ());
+                semiScaled[2] = new Vec(projVecs[2].getX() + 1, projVecs[2].getY() + 1, projVecs[2].getZ());
+
+                scaled[0] = new Vec(semiScaled[0].getX() * 0.5 * currentRoom.getWidth(), semiScaled[0].getY() * 0.5 * currentRoom.getHeight(), semiScaled[0].getZ());
+                scaled[1] = new Vec(semiScaled[1].getX() * 0.5 * currentRoom.getWidth(), semiScaled[1].getY() * 0.5 * currentRoom.getHeight(), semiScaled[1].getZ());
+                scaled[2] = new Vec(semiScaled[2].getX() * 0.5 * currentRoom.getWidth(), semiScaled[2].getY() * 0.5 * currentRoom.getHeight(), semiScaled[2].getZ());
+
+                System.out.println("HEIGHT: " + currentRoom.getHeight() + ", WIDTH: " + currentRoom.getWidth());
+                System.out.println(scaled[0].getX());
+
+
+
+
 
                 //DRAW
-                screen.drawTri((int)projVecs[0].getX(), (int)projVecs[0].getY(),
-                        (int)projVecs[1].getX(), (int)projVecs[1].getY(),
-                        (int)projVecs[2].getX(), (int)projVecs[2].getY(),
+                screen.drawTri((int)scaled[0].getX(), (int)scaled[0].getY(),
+                        (int)scaled[1].getX(), (int)scaled[1].getY(),
+                        (int)scaled[2].getX(), (int)scaled[2].getY(),
                         Color.WHITE);
 
             }

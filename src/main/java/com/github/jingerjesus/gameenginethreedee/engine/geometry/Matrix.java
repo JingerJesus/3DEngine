@@ -40,7 +40,7 @@ public class Matrix {
 
         for (int r = 0; r < m.length; r ++) {
             for (int c = 0; c < m[r].length; c ++) {
-                out[r] += v[r] * m[r][c];
+                out[r] += v[r] * m[c][r];
             }
         }
         return new Vec(out);
