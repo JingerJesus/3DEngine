@@ -1,5 +1,6 @@
 package com.github.jingerjesus.gameenginethreedee.engine;
 
+import com.github.jingerjesus.gameenginethreedee.engine.geometry.Matrix;
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Tri;
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Vec;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.GameObject;
@@ -26,6 +27,9 @@ public class Driver extends Application {
     static Scene currentScene;
     static Group currentGroup;
     static Room currentRoom;
+
+    static int θ;
+    static int θ0;
     public static GraphicsScreen screen;
     @Override
     public void start(Stage stage) throws IOException {
@@ -89,35 +93,65 @@ public class Driver extends Application {
     private static void drawPresentObjects() {
         GameObject[] objects = currentRoom.getObjects();
 
+        θ++; θ0 +=2;
+
         for (GameObject object : objects) {
             for (Tri tri : object.getMesh().getTris()) {
 
-
-                //PROJECT
-                Tri projected;
-                Vec[] projVecs = new Vec[3];
-                Vec[] preProjVecs = tri.getVecs();
+                //OPTIONAL - ROTATE Z
+                Vec[] preZRot = tri.getVecs();
+                Vec[] zRot = new Vec[3];
 
                 for (int i = 0; i < 3; i ++) {
-                    projVecs[i] = preProjVecs[i].project(currentRoom);
+                    zRot[i] = Matrix.projectVector(Matrix.getZRotationalMatrix(θ), preZRot[i]);
                 }
-                projected = new Tri(projVecs);
+
+                Vec[] xRot = new Vec[3];
+
+                for (int i = 0; i < 3; i ++) {
+                    xRot[i] = Matrix.projectVector(Matrix.getXRotationalMatrix(θ0), zRot[i]);
+                }
+
+
+
+                //OFFSET
+                //Vec[] preTranslate = tri.getVecs();
+                Vec[] preTranslate = xRot;
+                Vec[] translated = new Vec[3];
+
+                for (int i = 0; i < 3; i ++) {
+                    translated[i] = new Vec(preTranslate[i].getX(), preTranslate[i].getY(), preTranslate[i].getZ() + 3);
+                }
+
+
+                //PROJECT
+                Vec[] projVecs = new Vec[3];
+
+                //System.out.println(preProjVecs[0].getX() + ": PREPROJ");
+
+                for (int i = 0; i < 3; i ++) {
+                    projVecs[i] = Matrix.projectVector(Matrix.getProjectionMatrix(currentRoom), translated[i]);
+                }
+
+                //System.out.println(projVecs[0].getX() + ": POSTPROJ");
 
                 //SCALE
                 Vec[] semiScaled = new Vec[3];
                 Vec[] scaled = new Vec[3];
 
 
-                semiScaled[0] = new Vec(projVecs[0].getX() + 1, projVecs[0].getY() + 1, projVecs[0].getZ());
-                semiScaled[1] = new Vec(projVecs[1].getX() + 1, projVecs[1].getY() + 1, projVecs[1].getZ());
-                semiScaled[2] = new Vec(projVecs[2].getX() + 1, projVecs[2].getY() + 1, projVecs[2].getZ());
+                semiScaled[0] = new Vec(projVecs[0].getX() + 1.0, projVecs[0].getY() + 1, projVecs[0].getZ());
+                semiScaled[1] = new Vec(projVecs[1].getX() + 1.0, projVecs[1].getY() + 1, projVecs[1].getZ());
+                semiScaled[2] = new Vec(projVecs[2].getX() + 1.0, projVecs[2].getY() + 1, projVecs[2].getZ());
 
-                scaled[0] = new Vec(semiScaled[0].getX() * 0.5 * currentRoom.getWidth(), semiScaled[0].getY() * 0.5 * currentRoom.getHeight(), semiScaled[0].getZ());
-                scaled[1] = new Vec(semiScaled[1].getX() * 0.5 * currentRoom.getWidth(), semiScaled[1].getY() * 0.5 * currentRoom.getHeight(), semiScaled[1].getZ());
-                scaled[2] = new Vec(semiScaled[2].getX() * 0.5 * currentRoom.getWidth(), semiScaled[2].getY() * 0.5 * currentRoom.getHeight(), semiScaled[2].getZ());
+                //System.out.println(semiScaled[0].getX() + ", SEMISCALED");
 
-                System.out.println("HEIGHT: " + currentRoom.getHeight() + ", WIDTH: " + currentRoom.getWidth());
-                System.out.println(scaled[0].getX());
+                scaled[0] = new Vec(semiScaled[0].getX() * 0.47 * currentRoom.getWidth(), semiScaled[0].getY() * 0.47 * currentRoom.getHeight(), semiScaled[0].getZ());
+                scaled[1] = new Vec(semiScaled[1].getX() * 0.47 * currentRoom.getWidth(), semiScaled[1].getY() * 0.47 * currentRoom.getHeight(), semiScaled[1].getZ());
+                scaled[2] = new Vec(semiScaled[2].getX() * 0.47 * currentRoom.getWidth(), semiScaled[2].getY() * 0.47 * currentRoom.getHeight(), semiScaled[2].getZ());
+
+                //System.out.println("HEIGHT: " + currentRoom.getHeight() + ", WIDTH: " + currentRoom.getWidth());
+                //System.out.println(scaled[0].getX() + ", SCALED");
 
 
 

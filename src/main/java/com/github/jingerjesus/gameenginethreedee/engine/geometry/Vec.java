@@ -20,26 +20,9 @@ public class Vec {
         }
     }
 
-    public double getX() {return x;}
+    public double getX() {return this.x;}
     public double getY() {return y;}
     public double getZ() {return z;}
-
-    public Vec project(Room r) {
-        Matrix projmat = Matrix.getProjectionMatrix(r);
-
-        Vec semi = Matrix.MultiplyVector(projmat, this);
-
-        double[] almost = semi.getVector();
-
-        if (almost[3] != 0) {
-            for (int i = 0; i < 3; i ++) {
-                almost[i] /= almost[3];
-            }
-        }
-
-        return new Vec(almost[0], almost[1], almost[2]);
-
-    }
 
     public double[] getVector() {
         return new double[]{x, y, z, w};

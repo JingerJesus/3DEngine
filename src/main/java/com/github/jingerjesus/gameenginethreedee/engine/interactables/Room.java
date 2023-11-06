@@ -17,7 +17,7 @@ public abstract class Room {
     private Group group;
 
 
-    public double aspectRatio = (width * 1.0) / height;
+    public double aspectRatio;
     public static double fovAngle = 90;
     public static double fov = 1 / Math.tan(Math.toRadians(fovAngle/2));
 
@@ -39,6 +39,7 @@ public abstract class Room {
 
     public Room(int w, int h, String t) {
         width = w; height = h; windowTitle = t;
+        aspectRatio = (height * 1.0) / width;
         objects = new ArrayList<GameObject>();
         group = new Group();
         setup(width,height);
