@@ -38,6 +38,8 @@ public class Driver extends Application {
 
     public static ArrayList<Tri> toDraw;
 
+    static double yaw;
+
     public static Vec vCamera = new Vec(0, 0, 0), vLookDir;
 
     @Override
@@ -80,16 +82,37 @@ public class Driver extends Application {
 
                 double dx = 0, dy = 0, dz = 0;
 
-                if (KeyInput.isPressed("W")) {
+                Vec forward = vLookDir.mult(0.8);
+                Vec up = new Vec(0,1,0);
+                Vec right = up.cross(forward);
+
+
+                //up/down
+                if (KeyInput.isPressed("R")) {
                     dy = -0.8;
-                } else if (KeyInput.isPressed("S")) {
+                } else if (KeyInput.isPressed("V")) {
                     dy = 0.8;
                 }
 
+                //rotate yaw
+                if (KeyInput.isPressed("Q")) {
+                    yaw -= 0.8;
+                } else if (KeyInput.isPressed("E")) {
+                    yaw += 0.8;
+                }
+
+                //strafe
                 if (KeyInput.isPressed("A")) {
-                    dx = -0.8;
+                    vCamera = vCamera.sub(right);
                 } else if (KeyInput.isPressed("D")) {
-                    dx = 0.8;
+                    vCamera = vCamera.add(right);
+                }
+
+                //forward/backward
+                if (KeyInput.isPressed("W")) {
+                    vCamera = vCamera.add(forward);
+                } else if (KeyInput.isPressed("S")) {
+                    vCamera = vCamera.sub(forward);
                 }
 
                 vCamera = new Vec(vCamera.getX() + dx, vCamera.getY() + dy, vCamera.getZ() + dz);
