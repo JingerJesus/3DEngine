@@ -78,7 +78,7 @@ public class Tri {
             double shaded = in.getShading();
 
             Tri newTri = new Tri(
-                    in.getVecs()[0],
+                    insidePoints[0],
                     Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[0]),
                     Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[1])
             );

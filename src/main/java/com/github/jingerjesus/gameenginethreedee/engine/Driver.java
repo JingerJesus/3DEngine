@@ -191,7 +191,7 @@ public class Driver extends Application {
                     //CLIP
 
                     //clip against ZNear
-                    Tri[] clippedTris = Tri.clipAgainstPlane(new Vec(0, 0, 1 + currentRoom.zNear), vLookDir, new Tri(viewVecs));
+                    Tri[] clippedTris = Tri.clipAgainstPlane(new Vec(0, 0, 0 + currentRoom.zNear), new Vec(0, 0, 1), new Tri(viewVecs));
 
                     for (int n = 0; n < clippedTris.length; n ++) {
 
