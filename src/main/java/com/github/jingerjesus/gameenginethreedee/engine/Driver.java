@@ -257,17 +257,48 @@ public class Driver extends Application {
         });
 
         for (Tri tri : toDraw) {
+            ArrayList<Tri> listTris = new ArrayList<Tri>();
+            listTris.add(tri);
+            int newTris = 1;
 
-            screen.fillTri((int)tri.getVecs()[0].getX(), (int)tri.getVecs()[0].getY(),
-                    (int)tri.getVecs()[1].getX(), (int)tri.getVecs()[1].getY(),
-                    (int)tri.getVecs()[2].getX(), (int)tri.getVecs()[2].getY(),
-                    Color.rgb((int)tri.getShading(), (int)tri.getShading(), (int)tri.getShading()));
+            for (int i = 0; i < 4; i ++) {
+                Tri[] trisToAdd;
+                while (newTris>0) {
+                    Tri test = listTris.get(listTris.size()-1);
+                    listTris.remove(test);
+                    newTris--;
+
+                    switch (i) {
+                        case 0: trisToAdd = Tri.clipAgainstPlane(new Vec(0,0,0), new Vec(0,1,0), test); break;
+                        case 1: trisToAdd = Tri.clipAgainstPlane(new Vec(0, currentRoom.getHeight() - 1, 0), new Vec(0, -1, 0), test); break;
+                        case 2: trisToAdd = Tri.clipAgainstPlane(new Vec(0,0,0), new Vec(1,0,0), test); break;
+                        case 3: trisToAdd = Tri.clipAgainstPlane(new Vec(currentRoom.getWidth() - 1, 0, 0), new Vec(-1, 0, 0), test); break;
+                        default: trisToAdd = new Tri[0];
+                    }
+
+                    for (int j = 0; j < trisToAdd.length; j ++) {
+                        listTris.add(0, trisToAdd[j]);
+                    }
+                }
+                newTris = listTris.size();
 
 
-            //debug wireframe
-            screen.drawTri((int)tri.getVecs()[0].getX(), (int)tri.getVecs()[0].getY(), (int)tri.getVecs()[1].getX(), (int)tri.getVecs()[1].getY(), (int)tri.getVecs()[2].getX(), (int)tri.getVecs() [2].getY(),
-                    //Color.rgb((int)tri.getShading(), (int)tri.getShading(), (int)tri.getShading()));
-                    Color.BLACK);
+
+            }
+
+            for (Tri toDraw : listTris) {
+                screen.fillTri(toDraw, Color.rgb(
+                        (int)(toDraw.getShading()),
+                        (int)(toDraw.getShading()),
+                        (int)(toDraw.getShading())
+                ));
+
+                screen.drawTri(toDraw,
+                        //Color.rgb((int)(toDraw.getShading()), (int)(toDraw.getShading()), (int)(toDraw.getShading()))
+                        Color.BLACK
+                );
+            }
+
         }
 
     }

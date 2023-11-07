@@ -1,6 +1,8 @@
 package com.github.jingerjesus.gameenginethreedee.engine.peripherals;
 
 import com.github.jingerjesus.gameenginethreedee.engine.Driver;
+import com.github.jingerjesus.gameenginethreedee.engine.geometry.Tri;
+import com.github.jingerjesus.gameenginethreedee.engine.geometry.Vec;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -66,5 +68,26 @@ public class GraphicsScreen {
         draw.setFill(c);
         draw.fillPolygon(new double[]{x0, x1, x2}, new double[]{y0, y1, y2}, 3);
     }
+
+    public void fillTri(Tri in, Color color) {
+        Vec[] pts = in.getVecs();
+        fillTri(
+                (int)pts[0].getX(), (int)pts[0].getY(),
+                (int)pts[1].getX(), (int)pts[1].getY(),
+                (int)pts[2].getX(), (int)pts[2].getY(),
+                color
+        );
+    }
+
+    public void drawTri(Tri in, Color color) {
+        Vec[] pts = in.getVecs();
+        drawTri(
+                (int)pts[0].getX(), (int)pts[0].getY(),
+                (int)pts[1].getX(), (int)pts[1].getY(),
+                (int)pts[2].getX(), (int)pts[2].getY(),
+                color
+        );
+    }
+
     public Canvas get() {return drawPlane;}
 }
