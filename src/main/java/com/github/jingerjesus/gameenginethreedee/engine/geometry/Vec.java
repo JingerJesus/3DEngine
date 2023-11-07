@@ -63,9 +63,9 @@ public class Vec {
 
     public Vec add(Vec other) {
         return new Vec(
-                x + other.getX(),
-                y + other.getY(),
-                z + other.getZ()
+                this.x + other.getX(),
+                this.y + other.getY(),
+                this.z + other.getZ()
         );
     }
 
@@ -80,7 +80,7 @@ public class Vec {
     public Vec mult(double other) {
         return new Vec(
                 x * other,
-                y + other,
+                y * other,
                 z * other
         );
     }
@@ -92,5 +92,18 @@ public class Vec {
                 z / other
         );
     }
+
+    public static Vec intersectPlane(Vec plane_p, Vec plane_n, Vec lineStart, Vec lineEnd) {
+        plane_n = plane_n.normalize();
+        double plane_d = -Vec.DotProductOf(plane_n, plane_p);
+        double ad = Vec.DotProductOf(lineStart, plane_n);
+        double bd = Vec.DotProductOf(lineEnd, plane_n);
+        double t = (-plane_d - ad) / (bd - ad);
+        Vec lineStartToEnd = lineEnd.sub(lineStart);
+        Vec lineToIntersect = lineStartToEnd.mult(t);
+        return lineStart.add(lineToIntersect);
+    }
+
+
 
 }

@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="xdfghdooooooooootuo">
+    <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="weird stuff with moving forwards.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Vec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Vec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +36,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="no args" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.github.jingerjesus.gameenginethreedee.engine.Driver" />
@@ -105,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699331137419</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="weird stuff with moving forwards.">
+      <option name="closed" value="true" />
+      <created>1699332108461</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699332108461</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -129,6 +139,7 @@
     <MESSAGE value="getting weird stuff with scaling." />
     <MESSAGE value="cube rotate." />
     <MESSAGE value="xdfghdooooooooootuo" />
-    <option name="LAST_COMMIT_MESSAGE" value="xdfghdooooooooootuo" />
+    <MESSAGE value="weird stuff with moving forwards." />
+    <option name="LAST_COMMIT_MESSAGE" value="weird stuff with moving forwards." />
   </component>
 </project>
