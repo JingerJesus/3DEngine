@@ -54,6 +54,9 @@ public abstract class Room {
         stage.setScene(scene);
     }
 
+    public Scene getScene() {return scene;}
+
+
     public abstract void onStart();
     public abstract void onLoop();
 

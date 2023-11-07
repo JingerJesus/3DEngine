@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="getting weird stuff with scaling.">
+    <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="cube rotate.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/KeyInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/ObjFileLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/2ringplanet.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/axis.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Vec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Vec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/rooms/FirstRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/rooms/FirstRoom.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.editor"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="no args" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.github.jingerjesus.gameenginethreedee.engine.Driver" />
@@ -91,8 +99,19 @@
       <option name="project" value="LOCAL" />
       <updated>1699227991053</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cube rotate.">
+      <option name="closed" value="true" />
+      <created>1699303619642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699303619642</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.obj" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -106,9 +125,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="projection kinda done i think" />
     <MESSAGE value="getting weird stuff with scaling." />
-    <option name="LAST_COMMIT_MESSAGE" value="getting weird stuff with scaling." />
+    <MESSAGE value="cube rotate." />
+    <option name="LAST_COMMIT_MESSAGE" value="cube rotate." />
   </component>
 </project>

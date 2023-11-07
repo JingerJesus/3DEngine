@@ -3,6 +3,8 @@ package com.github.jingerjesus.gameenginethreedee.engine.geometry;
 public class Tri {
     private Vec[] vecs;
 
+    private double shading;
+
     public Tri() {
         vecs = new Vec[3];
     }
@@ -19,4 +21,24 @@ public class Tri {
     }
 
     public Vec[] getVecs() {return vecs;}
+
+    public void setShading(double shaded) {
+        shading = shaded;
+    }
+
+    public double getShading() {
+        return shading;
+    }
+
+    public double getMidpointZ() {
+        double sum = 0;
+
+        for (int i = 0; i < 3; i ++) {
+            sum += vecs[i].getZ();
+        }
+
+        sum /= 3;
+
+        return sum;
+    }
 }
