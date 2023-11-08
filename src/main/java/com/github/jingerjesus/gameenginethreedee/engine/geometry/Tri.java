@@ -1,11 +1,14 @@
 package com.github.jingerjesus.gameenginethreedee.engine.geometry;
 
+import javafx.scene.paint.Color;
+
 import java.util.function.Function;
 
 public class Tri {
     private Vec[] vecs;
 
     private double shading;
+    private Color color;
 
     public Tri() {
         vecs = new Vec[3];
@@ -30,6 +33,18 @@ public class Tri {
 
     public double getShading() {
         return shading;
+    }
+
+    public void setColor(Color c) {
+        color = c;
+    }
+
+    public Color getShadedColor() {
+        return Color.rgb(
+                (int)(color.getRed() * shading),
+                (int)(color.getGreen() * shading),
+                (int)(color.getBlue() * shading)
+        );
     }
 
     public double getMidpointZ() {

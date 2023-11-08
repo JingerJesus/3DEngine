@@ -7,7 +7,9 @@
     <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="PROBLEM SOLVED SUCK MY ASS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/GraphicsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/GraphicsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -8,7 +8,7 @@ public class Controller {
     /*
     Declare static game-wide variables here.
     */
-    static Room firstRoom = new FirstRoom(1024, 768, "graphics engine take 5");
+    static Room firstRoom = new FirstRoom(1920, 1080, "graphics engine take 5");
 
     public static void start() {
         Driver.changeRoomTo(firstRoom);

@@ -119,12 +119,6 @@ public class Driver extends Application {
             vCamera = new Vec(vCamera.getX(), vCamera.getY() + 0.8, vCamera.getZ());
         }
 
-        if (KeyInput.isPressed("A")) {
-            vCamera = new Vec(vCamera.getX() - 0.8, vCamera.getY(), vCamera.getZ());
-        } else if (KeyInput.isPressed("D")) {
-            vCamera = new Vec(vCamera.getX() + 0.8, vCamera.getY(), vCamera.getZ());
-        }
-
         if (KeyInput.isPressed("Q")) {
             yaw += 2;
         } else if (KeyInput.isPressed("E")) {
@@ -139,6 +133,16 @@ public class Driver extends Application {
         } else if (KeyInput.isPressed("S")) {
             vCamera = vCamera.sub(forward);
         }
+
+        Vec up = new Vec(0, 1, 0);
+        Vec right = up.cross(forward).normalize().mult(0.8);
+
+        if (KeyInput.isPressed("A")) {
+            vCamera = vCamera.sub(right);
+        } else if (KeyInput.isPressed("D")) {
+            vCamera = vCamera.add(right);
+        }
+
         //end controller
 
         Matrix worldMat = Matrix.getIdentityMatrix();
@@ -148,7 +152,6 @@ public class Driver extends Application {
         Matrix cameraRot = Matrix.getYRotationalMatrix(yaw);
 
         vLookDir = new Vec(0,0,1);
-        Vec up = new Vec(0,1,0);
         Vec target = new Vec(0,0,1);
 
 
@@ -226,7 +229,7 @@ public class Driver extends Application {
 
                         //DRAW
 
-                        Vec lighting = new Vec(0, 0, -1);
+                        Vec lighting = new Vec(0, -1, -4);
 
                         lighting = lighting.normalize();
                         double shading = Vec.DotProductOf(lighting, normal);
@@ -287,15 +290,18 @@ public class Driver extends Application {
             }
 
             for (Tri toDraw : listTris) {
-                screen.fillTri(toDraw, Color.rgb(
-                        (int)(toDraw.getShading()),
-                        (int)(toDraw.getShading()),
-                        (int)(toDraw.getShading())
-                ));
+
+                toDraw.setColor(Color.CRIMSON);
+                if (toDraw.getShading() < 30) {
+                    toDraw.setShading(30);
+                }
+
+                screen.fillTri(toDraw, toDraw.getShadedColor());
 
                 screen.drawTri(toDraw,
-                        //Color.rgb((int)(toDraw.getShading()), (int)(toDraw.getShading()), (int)(toDraw.getShading()))
-                        Color.BLACK
+                        toDraw.getShadedColor()
+                        //Color.WHITE
+                        //Color.BLACK
                 );
             }
 

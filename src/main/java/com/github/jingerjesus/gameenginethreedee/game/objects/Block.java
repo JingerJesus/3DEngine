@@ -10,7 +10,7 @@ public class Block extends GameObject {
     public Block() {
         super();
         //mesh = new UnitCube().getMesh();
-        mesh = ObjFileLoader.getObj("axis.obj");
+        mesh = ObjFileLoader.getObj("2ringplanet.obj");
     }
 
 }
