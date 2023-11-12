@@ -12,32 +12,39 @@ public class UnitCube {
     private Vec six = new Vec(0.0, 1.0, 1.0);
     private Vec seven = new Vec(1.0, 1.0, 1.0);
     private Vec eight = new Vec(1.0, 0.0, 1.0);
+
+    private Vec texOne = new Vec(0, 1);
+    private Vec texTwo = new Vec(0, 0);
+    private Vec texThree = new Vec(1, 0);
+    private Vec texFour = new Vec(1, 1);
+
+
     public UnitCube() {
 
         mesh = new Mesh(new Tri[] {
                 //SOUTH
-                new Tri(one, two, three),
-                new Tri(one, three, four),
+                new Tri(one, two, three, texOne, texTwo, texThree),
+                new Tri(one, three, four, texOne, texThree, texFour),
 
                 //EAST
-                new Tri(four, three, seven),
-                new Tri(four, seven, eight),
+                new Tri(four, three, seven, texOne, texTwo, texThree),
+                new Tri(four, seven, eight, texOne, texThree, texFour),
 
                 //NORTH
-                new Tri(eight, seven, six),
-                new Tri(eight, six, five),
+                new Tri(eight, seven, six, texOne, texTwo, texThree),
+                new Tri(eight, six, five, texOne, texThree, texFour),
 
                 //WEST
-                new Tri(five, six, two),
-                new Tri(five, two, one),
+                new Tri(five, six, two, texOne, texTwo, texThree),
+                new Tri(five, two, one, texOne, texThree, texFour),
 
                 //TOP
-                new Tri(two, six, seven),
-                new Tri(two, seven, three),
+                new Tri(two, six, seven, texOne, texTwo, texThree),
+                new Tri(two, seven, three, texOne, texThree, texFour),
 
                 //BOTTOM
-                new Tri(eight, five, one),
-                new Tri(eight, one, four)
+                new Tri(eight, five, one, texOne, texTwo, texThree),
+                new Tri(eight, one, four, texOne, texThree, texFour)
         });
     }
 

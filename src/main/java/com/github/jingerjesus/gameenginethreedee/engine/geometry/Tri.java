@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 public class Tri {
     private Vec[] vecs;
+    private Vec[] texs;
 
     private double shading;
     private Color color;
@@ -21,8 +22,21 @@ public class Tri {
         }
     }
 
+    public Tri(Vec[] vin, Vec[] tin) {
+        vecs = new Vec[3];
+        texs = new Vec[3];
+        for (int i = 0; i < 3; i ++) {
+            vecs[i] = vin[i];
+            texs[i] = tin[i];
+        }
+    }
+
     public Tri(Vec p0, Vec p1, Vec p2) {
         vecs = new Vec[]{p0, p1, p2};
+    }
+    public Tri(Vec p0, Vec p1, Vec p2, Vec t0, Vec t1, Vec t2) {
+        vecs = new Vec[]{p0, p1, p2};
+        texs = new Vec[]{t0, t1, t2};
     }
 
     public Vec[] getVecs() {return vecs;}
@@ -70,6 +84,9 @@ public class Tri {
 
         Vec[] insidePoints = new Vec[3]; int inPointCount = 0;
         Vec[] outsidePoints = new Vec[3]; int outPointCount = 0;
+
+        Vec[] insideTexs = new Vec[3]; int inTexCount = 0;
+        Vec[] outsideTexs = new Vec[3]; int outTexCount = 0;
 
 
         double d0 = dist.apply(in.getVecs()[0]);
@@ -120,4 +137,9 @@ public class Tri {
 
         } else return null;
     }
+
+    public void setTexs(Vec[] tin) {
+        texs = tin;
+    }
+    public Vec[] getTexs() {return texs;}
 }

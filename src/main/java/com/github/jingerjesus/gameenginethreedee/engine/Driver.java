@@ -3,6 +3,7 @@ package com.github.jingerjesus.gameenginethreedee.engine;
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Matrix;
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Tri;
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Vec;
+import com.github.jingerjesus.gameenginethreedee.engine.interactables.Camera;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.GameObject;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.Room;
 import com.github.jingerjesus.gameenginethreedee.engine.peripherals.GraphicsScreen;
@@ -114,18 +115,18 @@ public class Driver extends Application {
 
         //controller
         if (KeyInput.isPressed("R")) {
-            vCamera = new Vec(vCamera.getX(), vCamera.getY() - 0.8, vCamera.getZ());
+            vCamera = new Vec(vCamera.getX(), vCamera.getY() + Camera.getLinearSpeed(), vCamera.getZ());
         } else if (KeyInput.isPressed("V")) {
-            vCamera = new Vec(vCamera.getX(), vCamera.getY() + 0.8, vCamera.getZ());
+            vCamera = new Vec(vCamera.getX(), vCamera.getY() - Camera.getLinearSpeed(), vCamera.getZ());
         }
 
         if (KeyInput.isPressed("Q")) {
-            yaw += 2;
+            yaw -= Camera.getRotationSpeed();
         } else if (KeyInput.isPressed("E")) {
-            yaw -= 2;
+            yaw += Camera.getRotationSpeed();
         }
 
-        Vec forward = vLookDir.normalize().mult(0.8);
+        Vec forward = vLookDir.normalize().mult(Camera.getLinearSpeed());
         double[] f = forward.getVector();
 
         if (KeyInput.isPressed("W")) {
@@ -135,12 +136,12 @@ public class Driver extends Application {
         }
 
         Vec up = new Vec(0, 1, 0);
-        Vec right = up.cross(forward).normalize().mult(0.8);
+        Vec right = up.cross(forward).normalize().mult(Camera.getLinearSpeed());
 
         if (KeyInput.isPressed("A")) {
-            vCamera = vCamera.sub(right);
-        } else if (KeyInput.isPressed("D")) {
             vCamera = vCamera.add(right);
+        } else if (KeyInput.isPressed("D")) {
+            vCamera = vCamera.sub(right);
         }
 
         //end controller
@@ -175,6 +176,8 @@ public class Driver extends Application {
                     transformed[i] = Matrix.MultiplyVector(worldMat, tri.getVecs()[i]);
                 }
 
+                Tri transformedTri = new Tri(transformed, tri.getTexs());
+
 
                 Vec normal, line1, line2;
                 line1 = Vec.getVecBetween(transformed[0], transformed[1]);
@@ -190,6 +193,7 @@ public class Driver extends Application {
                     for (int i = 0; i < 3; i ++) {
                         viewVecs[i] = Matrix.MultiplyVector(mView, transformed[i]);
                     }
+                    Tri viewTri = new Tri(viewVecs, transformedTri.getTexs());
 
                     //CLIP
 
@@ -209,14 +213,22 @@ public class Driver extends Application {
 
                         //System.out.println(projVecs[0].getX() + ": POSTPROJ");
 
+                        Vec[] flippedVecs = new Vec[3];
+
+
+                        flippedVecs[0] = new Vec(projVecs[0].getX() * -1, projVecs[0].getY() * -1, projVecs[0].getZ());
+                        flippedVecs[1] = new Vec(projVecs[1].getX() * -1, projVecs[1].getY() * -1, projVecs[1].getZ());
+                        flippedVecs[2] = new Vec(projVecs[2].getX() * -1, projVecs[2].getY() * -1, projVecs[2].getZ());
+
+
                         //SCALE
                         Vec[] semiScaled = new Vec[3];
                         Vec[] scaled = new Vec[3];
 
 
-                        semiScaled[0] = new Vec(projVecs[0].getX() + 1.0, projVecs[0].getY() + 1, projVecs[0].getZ());
-                        semiScaled[1] = new Vec(projVecs[1].getX() + 1.0, projVecs[1].getY() + 1, projVecs[1].getZ());
-                        semiScaled[2] = new Vec(projVecs[2].getX() + 1.0, projVecs[2].getY() + 1, projVecs[2].getZ());
+                        semiScaled[0] = new Vec(flippedVecs[0].getX() + 1.0, flippedVecs[0].getY() + 1, flippedVecs[0].getZ());
+                        semiScaled[1] = new Vec(flippedVecs[1].getX() + 1.0, flippedVecs[1].getY() + 1, flippedVecs[1].getZ());
+                        semiScaled[2] = new Vec(flippedVecs[2].getX() + 1.0, flippedVecs[2].getY() + 1, flippedVecs[2].getZ());
 
                         //System.out.println(semiScaled[0].getX() + ", SEMISCALED");
 
@@ -291,7 +303,7 @@ public class Driver extends Application {
 
             for (Tri toDraw : listTris) {
 
-                toDraw.setColor(Color.CRIMSON);
+                toDraw.setColor(Color.WHITE);
                 if (toDraw.getShading() < 30) {
                     toDraw.setShading(30);
                 }
@@ -299,8 +311,8 @@ public class Driver extends Application {
                 screen.fillTri(toDraw, toDraw.getShadedColor());
 
                 screen.drawTri(toDraw,
-                        toDraw.getShadedColor()
-                        //Color.WHITE
+                        //toDraw.getShadedColor()
+                        Color.WHITE
                         //Color.BLACK
                 );
             }

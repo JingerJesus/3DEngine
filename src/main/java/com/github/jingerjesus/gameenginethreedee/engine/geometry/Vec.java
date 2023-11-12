@@ -12,12 +12,19 @@ public class Vec {
     public Vec(double i, double i1, double i2) {
         x = i; y = i1; z = i2;
     }
+    public Vec(double i, double i1, double i2, double i3) {
+        x = i; y = i1; z = i2; w = i3;
+    }
 
     public Vec(double[] in) {
         if (in.length == 3) new Vec(in[0], in[1], in[2]);
         else if (in.length == 4) {
             x = in[0]; y = in[1]; z = in[2]; w = in[3];
         }
+    }
+
+    public Vec(double u, double v) {
+        x = u; y = v; z = 0;
     }
 
     public double getX() {return this.x;}
@@ -101,9 +108,10 @@ public class Vec {
         double t = (-plane_d - ad) / (bd - ad);
         Vec lineStartToEnd = lineEnd.sub(lineStart);
         Vec lineToIntersect = lineStartToEnd.mult(t);
-        return lineStart.add(lineToIntersect);
+        Vec out = lineStart.add(lineToIntersect);
+        return new Vec(out.getX(), out.getY(), out.getZ(), t);
     }
 
-
+    public double getW() {return w;}
 
 }
