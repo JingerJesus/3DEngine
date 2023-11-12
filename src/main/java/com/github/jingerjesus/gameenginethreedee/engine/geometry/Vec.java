@@ -113,5 +113,6 @@ public class Vec {
     }
 
     public double getW() {return w;}
+    public void setW(double i) {w = i;}
 
 }

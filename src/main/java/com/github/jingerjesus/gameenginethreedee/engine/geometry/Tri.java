@@ -95,39 +95,110 @@ public class Tri {
 
         //You have no idea what this does. Godspeed, future you.
 
-        if (d0 >= 0) { insidePoints[inPointCount++] = in.getVecs()[0]; }
-        else { outsidePoints[outPointCount++] = in.getVecs()[0]; }
-        if (d1 >= 0) { insidePoints[inPointCount++] = in.getVecs()[1]; }
-        else { outsidePoints[outPointCount++] = in.getVecs()[1]; }
-        if (d2 >= 0) { insidePoints[inPointCount++] = in.getVecs()[2]; }
-        else { outsidePoints[outPointCount++] = in.getVecs()[2]; }
+        if (d0 >= 0) { insidePoints[inPointCount++] = in.getVecs()[0]; insideTexs[inTexCount++] = in.getTexs()[0];}
+        else { outsidePoints[outPointCount++] = in.getVecs()[0]; outsideTexs[outTexCount++] = in.getTexs()[0];}
+        if (d1 >= 0) { insidePoints[inPointCount++] = in.getVecs()[1]; insideTexs[inTexCount++] = in.getTexs()[1];}
+        else { outsidePoints[outPointCount++] = in.getVecs()[1]; outsideTexs[outTexCount++] = in.getTexs()[1];}
+        if (d2 >= 0) { insidePoints[inPointCount++] = in.getVecs()[2]; insideTexs[inTexCount++] = in.getTexs()[2];}
+        else { outsidePoints[outPointCount++] = in.getVecs()[2]; outsideTexs[outTexCount++] = in.getTexs()[2];}
 
         if (inPointCount == 0) {
             return new Tri[0];
         } else if (inPointCount == 3) {
             return new Tri[] {in};
         } else if (inPointCount == 1 && outPointCount == 2) {
+
             double shaded = in.getShading();
+
+            double t;
+
+            Vec p1, p2;
+            Vec t1, t2;
+
+            p1 = Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[0]);
+            t = p1.getW();
+            t1 = new Vec(
+                    t * (outsideTexs[0].getX() - insideTexs[0].getX()) + insideTexs[0].getX(),
+                    t * (outsideTexs[0].getY() - insideTexs[0].getY()) + insideTexs[0].getY()
+            );
+            t1.setW(
+                    //I may be stupid. if something breaks, look here first.
+                    t * (outsideTexs[0].getW() - insideTexs[0].getW()) + insideTexs[0].getW()
+            );
+
+            p2 = Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[1]);
+            t2 = new Vec(
+                    t * (outsideTexs[1].getX() - insideTexs[0].getX()) + insideTexs[0].getX(),
+                    t * (outsideTexs[1].getY() - insideTexs[0].getY()) + insideTexs[0].getY()
+            );
+
+            t2.setW(
+                    //I may be stupid. if something breaks, look here first.
+                    t * (outsideTexs[1].getW() - insideTexs[0].getW()) + insideTexs[0].getW()
+            );
 
             Tri newTri = new Tri(
                     insidePoints[0],
-                    Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[0]),
-                    Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[1])
+                    p1,
+                    p2,
+
+                    //textures
+                    insideTexs[0],
+                    t1,
+                    t2
             );
             newTri.setShading(shaded);
             return new Tri[]{newTri};
         } else if (inPointCount == 2 && outPointCount == 1) {
             double shaded = in.getShading();
+            double t;
+
+            Vec p3, p4;
+            Vec t3, t4;
+
+
+            p3 = Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[0]);
+            t = p3.getW();
+            t3 = new Vec(
+                    t * (outsideTexs[0].getX() - insideTexs[0].getX()) + insideTexs[0].getX(),
+                    t * (outsideTexs[0].getY() - insideTexs[0].getY()) + insideTexs[0].getY()
+            );
+            t3.setW(
+                    t * (outsideTexs[0].getW() - insideTexs[0].getW()) + insideTexs[0].getW()
+            );
+
+            p4 = Vec.intersectPlane(pPoint, pNorm, insidePoints[1], outsidePoints[0]);
+            t = p4.getW();
+            t4 = new Vec(
+                    t * (outsideTexs[0].getX() - insideTexs[1].getX()) + insideTexs[1].getX(),
+                    t * (outsideTexs[0].getY() - insideTexs[1].getY()) + insideTexs[1].getY()
+            );
+            t3.setW(
+                    t * (outsideTexs[0].getW() - insideTexs[1].getW()) + insideTexs[1].getW()
+            );
+
 
             Tri newTri1 = new Tri(
                     insidePoints[0],
                     insidePoints[1],
-                    Vec.intersectPlane(pPoint, pNorm, insidePoints[0], outsidePoints[0] )
+                    p3,
+
+                    //textures
+                    insideTexs[0],
+                    insideTexs[1],
+                    t3
+
             );
             Tri newTri2 = new Tri(
                     insidePoints[1],
                     newTri1.getVecs()[2],
-                    Vec.intersectPlane(pPoint, pNorm, insidePoints[1], outsidePoints[0])
+                    p4,
+
+                    //textures
+                    insideTexs[0],
+                    newTri1.getTexs()[2],
+                    t4
+
             );
 
             newTri1.setShading(shaded);
