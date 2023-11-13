@@ -88,6 +88,9 @@ public class GraphicsScreen {
                 color
         );
     }
+    public void plotPoint(int px, int py, Color c) {
+        draw.getPixelWriter().setColor(px,py,c);
+    }
 
     public Canvas get() {return drawPlane;}
 }

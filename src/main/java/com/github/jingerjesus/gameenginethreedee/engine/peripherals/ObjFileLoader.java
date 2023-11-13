@@ -20,7 +20,7 @@ public class ObjFileLoader {
         ArrayList<Vec> vecPool = new ArrayList<Vec>();
         ArrayList<Tri> triPool = new ArrayList<Tri>();
 
-        File file = new File("src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/" + path);
+        File file = new File("src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/objects/" + path);
         try {
             scan = new Scanner(file);
             while (scan.hasNextLine()) {

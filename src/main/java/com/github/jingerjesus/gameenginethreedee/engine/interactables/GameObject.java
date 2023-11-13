@@ -1,10 +1,17 @@
 package com.github.jingerjesus.gameenginethreedee.engine.interactables;
 
 import com.github.jingerjesus.gameenginethreedee.engine.geometry.Mesh;
+import com.github.jingerjesus.gameenginethreedee.engine.geometry.UnitCube;
 
 public abstract class GameObject {
     protected Mesh mesh;
-    private double x, y, z, w, h, l;
+    protected Texture texture;
+    private double x, y, z, w, h, d;
+
+    protected GameObject() {
+        mesh = new UnitCube().getMesh();
+        texture = new Texture("defaultTexture.png");
+    }
 
     public Mesh getMesh() {return mesh;}
 
@@ -14,5 +21,7 @@ public abstract class GameObject {
 
     public abstract void onStart();
     public abstract void onLoop();
+
+    public Texture getTexture() {return texture;}
 
 }

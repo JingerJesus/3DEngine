@@ -8,7 +8,6 @@ import com.github.jingerjesus.gameenginethreedee.engine.peripherals.ObjFileLoade
 public class Block extends GameObject {
 
     public Block() {
-        super();
         mesh = new UnitCube().getMesh();
         //mesh = ObjFileLoader.getObj("axis.obj");
     }
