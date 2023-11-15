@@ -22,9 +22,9 @@ public class Texture {
         return image.getPixelReader().getColor(x,y);
     }
     public Color getNormalizedPixel(double x, double y) {
-        System.out.println(x + ", " + y);
+        System.out.println("X: " + x + ", Y: " + y);
         int u, v;
-        u = (int) (x*image.getWidth());
+        u = (int)(x*image.getWidth());
         v = (int)(y*image.getHeight());
 
         System.out.println("U: " + u + ", V: " + v);

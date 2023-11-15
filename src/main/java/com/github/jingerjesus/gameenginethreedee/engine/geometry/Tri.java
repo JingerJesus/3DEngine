@@ -219,5 +219,10 @@ public class Tri {
     }
     public Vec[] getTexs() {return texs;}
 
-    public Texture getTexture() {return texture;}
+    public Texture getTexture() {
+        if (texture == null) return new Texture("defaultTexture.png");
+
+        return texture;
+    }
+    public void setTexture(Texture t) {texture = t;}
 }

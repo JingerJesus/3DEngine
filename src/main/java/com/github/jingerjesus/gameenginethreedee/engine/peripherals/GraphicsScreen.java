@@ -211,11 +211,50 @@ public class GraphicsScreen {
             dv1 = v3 - v2;
             du1 = u3 - u2;
 
+            du1Step = 0; dv1Step = 0;
+
             if (dy1 != 0) {
                 daxStep = dx1/((double)Math.abs(dy1));
+                du1Step = du1/((double)Math.abs(dy1));
+                dv1Step = dv1/((double)Math.abs(dy1));
             }
             if (dy2 != 0) {
-                dbxStep = dx2/(double)(1.0);
+                dbxStep = dx2/((double)Math.abs(dy2));
+            }
+
+            for (int i = y2; i <= y3; i ++) {
+
+                int ax = (int)(x2 + (double)((i-y2)*daxStep));
+                int bx = (int)(x1 + (double)((i-y1)*dbxStep));
+
+                double texSu = u2 + (double)(i-y2)*du1Step;
+                double texSv = v2 + (double)(i-y2)*dv1Step;
+
+                double texEu = u1 + (double)(i-y1)*du2Step;
+                double texEv = v1 + (double)(i-y1)*dv2Step;
+
+                if (ax > bx) {
+                    tempi = ax; ax = bx; bx = tempi;
+                    tempd = texSu; texSu = texEu; texEu = tempd;
+                    tempd = texSv; texSv = texEv; texEv = tempd;
+                }
+
+                tu = texSu;
+                tv = texSv;
+
+                double tstep = 1.0 / ((double)(bx-ax));
+                double t = 0.0;
+
+                for (int j = ax; j < bx; j ++) {
+
+                    tu = (1.0 - t) * texSu + t * texEu;
+                    tv = (1.0 - t) * texSv + t * texEv;
+
+                    plotPoint(j, i, in.getTexture().getNormalizedPixel(tu, tv));
+
+                    t += tstep;
+
+                }
             }
 
         }

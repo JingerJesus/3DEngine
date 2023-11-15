@@ -309,7 +309,8 @@ public class Driver extends Application {
                     toDraw.setShading(30);
                 }
 
-                screen.fillTri(toDraw, toDraw.getShadedColor());
+                //screen.fillTri(toDraw, toDraw.getShadedColor());
+                screen.drawTexturedTriangle(toDraw);
 
                 screen.drawTri(toDraw,
                         toDraw.getShadedColor()

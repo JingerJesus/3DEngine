@@ -10,12 +10,14 @@ public class Block extends GameObject {
 
     public Block() {
         super();
-        mesh = ObjFileLoader.getObj("untitled.obj");
+        //mesh = ObjFileLoader.getObj("untitled.obj");
+        mesh.setTexture(texture);
     }
 
     public Block(Texture t) {
         super();
         texture = t;
+        mesh.setTexture(t);
     }
 
     @Override
