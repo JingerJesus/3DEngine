@@ -1,12 +1,17 @@
 package com.github.jingerjesus.gameenginethreedee.engine.geometry;
 
+import com.github.jingerjesus.gameenginethreedee.engine.interactables.Room;
+import com.github.jingerjesus.gameenginethreedee.engine.interactables.Texture;
+import com.github.jingerjesus.gameenginethreedee.engine.peripherals.GraphicsScreen;
 import javafx.scene.paint.Color;
 
 import java.util.function.Function;
 
 public class Tri {
     private Vec[] vecs;
-    private Vec[] texs;
+    private Vec[] texs = new Vec[] {new Vec(), new Vec(), new Vec()};
+
+    private Texture texture;
 
     private double shading;
     private Color color;
@@ -213,4 +218,6 @@ public class Tri {
         texs = tin;
     }
     public Vec[] getTexs() {return texs;}
+
+    public Texture getTexture() {return texture;}
 }

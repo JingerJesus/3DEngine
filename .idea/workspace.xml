@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="730a15c1-c64b-4781-a181-b8417199e6da" name="Changes" comment="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/Texture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/textures/defaultTexture.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/geometry/Tri.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/interactables/Texture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/GraphicsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/GraphicsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/ObjFileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/engine/peripherals/ObjFileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/2ringplanet.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/objects/2ringplanet.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/axis.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/objects/axis.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/untitled.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/models/objects/untitled.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/objects/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/rooms/FirstRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jingerjesus/gameenginethreedee/game/rooms/FirstRoom.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">

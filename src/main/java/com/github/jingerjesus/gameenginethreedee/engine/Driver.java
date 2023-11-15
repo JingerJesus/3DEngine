@@ -6,6 +6,7 @@ import com.github.jingerjesus.gameenginethreedee.engine.geometry.Vec;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.Camera;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.GameObject;
 import com.github.jingerjesus.gameenginethreedee.engine.interactables.Room;
+import com.github.jingerjesus.gameenginethreedee.engine.interactables.Texture;
 import com.github.jingerjesus.gameenginethreedee.engine.peripherals.GraphicsScreen;
 import com.github.jingerjesus.gameenginethreedee.engine.peripherals.KeyInput;
 import com.github.jingerjesus.gameenginethreedee.game.Controller;
@@ -241,7 +242,7 @@ public class Driver extends Application {
 
                         //DRAW
 
-                        Vec lighting = new Vec(0, -1, -4);
+                        Vec lighting = new Vec(0, 1, 4);
 
                         lighting = lighting.normalize();
                         double shading = Vec.DotProductOf(lighting, normal);
@@ -311,8 +312,8 @@ public class Driver extends Application {
                 screen.fillTri(toDraw, toDraw.getShadedColor());
 
                 screen.drawTri(toDraw,
-                        //toDraw.getShadedColor()
-                        Color.WHITE
+                        toDraw.getShadedColor()
+                        //Color.WHITE
                         //Color.BLACK
                 );
             }
